@@ -51,13 +51,7 @@ class HomeFragment : Fragment() {
         auth = Firebase.auth
 
             _binding!!.button.setOnClickListener(View.OnClickListener {
-                var lastSignIn = GoogleSignIn.getLastSignedInAccount(requireContext())
-                if (lastSignIn != null) {
-                    auth.currentUser!!.unlink(GoogleAuthProvider.getCredential(lastSignIn.idToken, null).provider)
-//                    auth.currentUser!!.reload()
-                } else {
-                    signIn()
-                }
+                signIn()
             })
 
         return root
@@ -67,7 +61,7 @@ class HomeFragment : Fragment() {
         Log.d("TAG", "Email sent.")
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken(getString(R.string.default_web_client_ids))
             .requestEmail()
             .build()
 

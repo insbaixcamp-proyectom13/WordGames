@@ -1,13 +1,18 @@
 package com.insbaixcamp.game.ui.dashboard
-
+import com.insbaixcamp.game.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.insbaixcamp.game.databinding.FragmentDashboardBinding
+import java.io.BufferedReader
+import java.io.InputStream
+import java.io.InputStreamReader
+
 
 class DashboardFragment : Fragment() {
 
@@ -28,12 +33,23 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        val tv: TextView = binding.textDashboard
+        val imput = resources.openRawResource(R.raw.espanol)
+        val buffer = imput.bufferedReader()
+        val arrayList = ArrayList<String>()
+        var line : String?
+        do {
+            line = buffer.readLine()
+            if (line == null)
+                break
+            arrayList.add(line)
+        } while (true)
+
+        tv.text = arrayList.get(3580)
+
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
