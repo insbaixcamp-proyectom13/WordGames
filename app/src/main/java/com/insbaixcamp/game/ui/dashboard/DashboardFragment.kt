@@ -1,6 +1,7 @@
 package com.insbaixcamp.game.ui.dashboard
 import com.insbaixcamp.game.R
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,21 +35,27 @@ class DashboardFragment : Fragment() {
         val root: View = binding.root
 
         val tv: TextView = binding.textDashboard
-        val imput = resources.openRawResource(R.raw.espanol)
-        val buffer = imput.bufferedReader()
-        val arrayList = ArrayList<String>()
-        var line : String?
-        do {
-            line = buffer.readLine()
-            if (line == null)
-                break
-            arrayList.add(line)
-        } while (true)
+        val imput = resources.openRawResource(R.raw.english)
+        val reader = imput.bufferedReader()
+        val words = ArrayList<String>()
+        var line : String? = ""
+        var parts : List<String>
+        line = reader.readLine()
+        while (line != null) {
+            if (line.contains("/")){
+                parts = line.split("/")
+                words.add(parts.elementAt(0))
+            } else {
+                words.add(line)
+            }
+            line = reader.readLine()
+        }
 
-        tv.text = arrayList.get(3580)
+
 
         return root
     }
+
 
 
     override fun onDestroyView() {
@@ -56,3 +63,5 @@ class DashboardFragment : Fragment() {
         _binding = null
     }
 }
+
+
