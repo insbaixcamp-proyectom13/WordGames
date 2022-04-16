@@ -22,4 +22,9 @@
         android:name="com.insbaixcamp.game.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_wordle"
+        android:name="com.insbaixcamp.game.ui.wordle.WordleFragment"
+        android:label="fragment_wordle"
+        tools:layout="@layout/fragment_wordle" />
 </navigation>
