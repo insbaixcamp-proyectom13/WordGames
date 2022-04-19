@@ -1,5 +1,7 @@
 package com.insbaixcamp.game
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -14,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.insbaixcamp.game.databinding.ActivityMainBinding
+import com.insbaixcamp.game.utilities.Diccionaro
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,13 +41,25 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_wordle
             )
         )
+        Diccionaro.setActivity(this as MainActivity)
+        Diccionaro.setSharedPreferences(getShared())
+//        Diccionaro.loadRawResources(resources)
+//        Diccionaro.setPackagedName(applicationContext.packageName)
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        Log.i("langMAIN", Diccionaro.findLanguage())
     }
 
     override fun onStart() {
         super.onStart()
         currentUser = auth.currentUser ?: signInAnonymously()
+    }
+
+    fun getShared(): SharedPreferences{
+        return this.getSharedPreferences(
+            getString(R.string.shared_preferences_file),
+            Context.MODE_PRIVATE)
     }
 
     private fun signInAnonymously() : FirebaseUser? {

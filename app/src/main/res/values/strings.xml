@@ -5,4 +5,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="default_web_client_ids" />
     <string name="fragment_wordle">Wordle</string>
+    <string name="shared_preferences_file">sharedPreferences</string>
 </resources>
