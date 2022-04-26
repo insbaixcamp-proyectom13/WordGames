@@ -56,7 +56,7 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <include
+    <ViewStub
         android:id="@+id/inc_keyboard"
         layout="@layout/wordle_keyboard_es"
         android:layout_width="0dp"

@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
 
+        Diccionaro.inicialitzar(resources, getShared(), packageName)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -41,15 +43,33 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_wordle
             )
         )
-        Diccionaro.setActivity(this as MainActivity)
-        Diccionaro.setSharedPreferences(getShared())
-//        Diccionaro.loadRawResources(resources)
-//        Diccionaro.setPackagedName(applicationContext.packageName)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        Log.i("langMAIN", Diccionaro.findLanguage())
+//        Log.i("langMAIN", Diccionaro.findLanguage())
     }
+
+    //    private fun loadDictionary(lang:String) {
+//        switchLanguage(lang)
+//        dictionary = mutableListOf()
+//        val input = activity!!.resources.openRawResource(activity!!.resources.getIdentifier("$lang.txt", "raw", packageName))
+//        val reader = input.bufferedReader()
+//        var line : String? = ""
+//        var parts : List<String>
+//
+//        line = reader.readLine()
+//        while (line != null) {
+//            if (line.contains("/")){
+//                parts = line.split("/")
+//                dictionary!!.add(parts.elementAt(0))
+//            } else {
+//                dictionary!!.add(line)
+//            }
+//            Log.i("paraula", dictionary!![dictionary!!.size-1]);
+//            line = reader.readLine()
+//        }
+//
+//    }
 
     override fun onStart() {
         super.onStart()

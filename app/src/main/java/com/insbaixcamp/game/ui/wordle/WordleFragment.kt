@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.ViewStub
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.get
@@ -16,6 +17,7 @@ import androidx.core.view.size
 import com.insbaixcamp.game.R
 import com.insbaixcamp.game.databinding.FragmentWordleBinding
 import com.insbaixcamp.game.ui.notifications.NotificationsViewModel
+import com.insbaixcamp.game.utilities.Diccionaro
 
 class WordleFragment : Fragment(), OnClickListener {
     private var _binding: FragmentWordleBinding? = null
@@ -29,6 +31,7 @@ class WordleFragment : Fragment(), OnClickListener {
     private lateinit var wordTextView: ViewGroup
     private lateinit var intents:MutableList<ViewGroup>
     private var intentos = 0
+    private lateinit var inflated: View;
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,11 +42,11 @@ class WordleFragment : Fragment(), OnClickListener {
             ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
         _binding = FragmentWordleBinding.inflate(inflater, container, false)
-        root = binding.root
+
         word = mutableListOf('c', 'a', 'n', 't', 'a')
         input = mutableListOf()
         initializeKeyBoard()
-
+        root = binding.root
         //añade el primer edit text para luego ir agregando
         //y cambiando cuando se completen la palabras
         intents = mutableListOf(binding.incWord1.root, binding.incWord2.root, binding.incWord3.root,
@@ -72,9 +75,13 @@ class WordleFragment : Fragment(), OnClickListener {
     private fun initializeKeyBoard() {
         //Leer shared preferences para cargar el teclado segun idioma(ingles por defecto)
 
-        var container1 = binding.incKeyboard.linearLayout as ViewGroup
-        var container2 = binding.incKeyboard.linearLayout2 as ViewGroup
-        var container3 = binding.incKeyboard.linearLayout3 as ViewGroup
+        var view = binding.incKeyboard as ViewStub
+        view.layoutResource = getLayoutKeyboard(Diccionaro.setUpLanguage())
+        inflated = view.inflate()
+
+        var container1 = inflated.findViewById(R.id.linearLayout) as ViewGroup
+        var container2 = inflated.findViewById(R.id.linearLayout) as ViewGroup
+        var container3 = inflated.findViewById(R.id.linearLayout) as ViewGroup
 
         Log.i("butons", container1.childCount.toString())
         Log.i("butons", container2.childCount.toString())
@@ -94,6 +101,10 @@ class WordleFragment : Fragment(), OnClickListener {
         }
     }
 
+    private fun getLayoutKeyboard(upLanguage: String): Int {
+        return resources.getIdentifier("wordle_keyboard_$upLanguage", "layout", requireContext().packageName)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -101,7 +112,7 @@ class WordleFragment : Fragment(), OnClickListener {
 
     override fun onClick(p0: View?) {
 
-        if (p0 == binding.incKeyboard.ivSend){
+        if (p0 == inflated.findViewById(R.id.ivSend)){
             if (input.size == 5 && isValidWord(input.toString())) {
 
                 showValidChars()
@@ -126,7 +137,7 @@ class WordleFragment : Fragment(), OnClickListener {
 
             } else { Toast.makeText(context, "Palabra no reconocida por el diccionario o tamaño no valido", Toast.LENGTH_LONG).show() }
 
-        } else if(p0 == binding.incKeyboard.ivDelete) {
+        } else if(p0 == inflated.findViewById(R.id.ivDelete)) {
             if (input.isNotEmpty())
                 input.removeLast()
             setWord()
