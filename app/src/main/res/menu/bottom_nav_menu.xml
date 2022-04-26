@@ -18,6 +18,7 @@
     <item
         android:id="@+id/navigation_wordle"
         android:icon="@drawable/ic_w_letter_svgrepo_com"
-        android:title="@string/fragment_wordle" />
+        android:title="@string/fragment_wordle"
+        />
 
 </menu>
