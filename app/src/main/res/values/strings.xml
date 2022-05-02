@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WordGames</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="syncup">Create Account</string>
+    <string name="signin">Google Log In</string>
+    <string name="signup">WELCOME!</string>
+    <string name="profile">PROFILE</string>
+    <string name="profile_username">Username</string>
+    <string name="button_accept_google"></string>
+    <string name="button_decline">DECLINE</string>
+</resources>

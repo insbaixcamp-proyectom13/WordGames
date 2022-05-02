@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.account.LoginFragment">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/profile"
+        android:textColor="@color/wine_berry"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:cardBackgroundColor="@color/pharlap"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/white"
+                app:boxStrokeColor="@color/white"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:counterTextColor="@color/wine_berry"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/white"
+                app:hintTextColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_user_svgrepo_com"
+                app:startIconTint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/wine_berry"
+                    android:fontFamily="@font/carter_one"
+                    android:hint="@string/profile_username"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/ivMale"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="64dp"
+                android:src="@mipmap/perfil_male_empty"
+                app:layout_constraintBottom_toTopOf="@+id/ivCreateAnonymous"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ivFemale"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+            <ImageView
+                android:id="@+id/ivFemale"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="64dp"
+                android:src="@mipmap/profile_female_empty"
+                app:layout_constraintBottom_toTopOf="@+id/ivCreateAnonymous"
+                app:layout_constraintEnd_toStartOf="@+id/ivMale"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+            <ImageView
+                android:id="@+id/ivCreateGoogle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:src="@drawable/ic_google_plus_svgrepo_com"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ivCreateAnonymous"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/ivCreateAnonymous"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/circle_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ivReturnSignup"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ivCreateGoogle" />
+
+            <View
+                android:id="@+id/ivReturnSignup"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/circle_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ivCreateAnonymous" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_arrow_back_svgrepo_com"
+                app:layout_constraintBottom_toBottomOf="@+id/ivReturnSignup"
+                app:layout_constraintEnd_toEndOf="@+id/ivReturnSignup"
+                app:layout_constraintStart_toStartOf="@+id/ivReturnSignup"
+                app:layout_constraintTop_toTopOf="@+id/ivReturnSignup" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="32dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="2dp"
+                android:src="@drawable/ic_add_user_add_svgrepo_com"
+                app:layout_constraintBottom_toBottomOf="@+id/ivCreateAnonymous"
+                app:layout_constraintEnd_toEndOf="@+id/ivCreateAnonymous"
+                app:layout_constraintStart_toStartOf="@+id/ivCreateAnonymous"
+                app:layout_constraintTop_toTopOf="@+id/ivCreateAnonymous"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
