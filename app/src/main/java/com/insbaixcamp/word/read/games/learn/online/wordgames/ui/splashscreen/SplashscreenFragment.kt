@@ -19,6 +19,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.insbaixcamp.word.read.games.learn.online.wordgames.MainActivity
 import com.insbaixcamp.word.read.games.learn.online.wordgames.R
 import com.insbaixcamp.word.read.games.learn.online.wordgames.databinding.FragmentSplashscreenBinding
@@ -49,9 +52,28 @@ class SplashscreenFragment : Fragment() {
         rollDice()
         activity!!.lifecycleScope.launch {
             delay(5000)
-            root!!.findNavController().navigate(R.id.signupFragment)
+            if (Firebase.auth.currentUser == null) {
+                root!!.findNavController().navigate(R.id.signupFragment)
+            } else {
+                (activity as MainActivity).floatButtonClicked(binding.root)
+            }
+
         }
         return root!!
+    }
+
+    private fun createAnonymousAccount(currentUser: FirebaseUser?) {
+        if (currentUser == null){
+            Firebase.auth.signInAnonymously().addOnCompleteListener { task ->
+                if (task.isSuccessful){
+                    Log.d("anonimous", "signInAnonymously:success")
+                    val user = Firebase.auth.currentUser
+                    root!!.findNavController().navigate(R.id.signupFragment)
+                }
+            }
+        } else {
+            root!!.findNavController().navigate(R.id.signupFragment)
+        }
     }
 
     private fun rollDice() {
