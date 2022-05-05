@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.insbaixcamp.game.databinding.TestFragmentBinding
 import com.insbaixcamp.word.read.games.learn.online.wordgames.MainActivity
-import com.insbaixcamp.word.read.games.learn.online.wordgames.databinding.TestFragmentBinding
 
 class TestFragment : Fragment() {
 
@@ -27,6 +27,11 @@ class TestFragment : Fragment() {
     ): View? {
         binding = TestFragmentBinding.inflate(inflater, container, false)
         root = binding.root
+
+        binding.cvWordSearch.setOnClickListener {
+
+        }
+
         return root
     }
 

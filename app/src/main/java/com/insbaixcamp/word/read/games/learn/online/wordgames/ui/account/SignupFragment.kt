@@ -24,9 +24,9 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.insbaixcamp.game.R
+import com.insbaixcamp.game.databinding.FragmentSignupBinding
 import com.insbaixcamp.word.read.games.learn.online.wordgames.MainActivity
-import com.insbaixcamp.word.read.games.learn.online.wordgames.R
-import com.insbaixcamp.word.read.games.learn.online.wordgames.databinding.FragmentSignupBinding
 import com.insbaixcamp.word.read.games.learn.online.wordgames.firebase.data.User
 
 class SignupFragment : Fragment() {
@@ -49,8 +49,12 @@ class SignupFragment : Fragment() {
 
         _binding.cvLogin.setOnClickListener {
             //Pedir credenciales de google e iniciar session con ellas
+
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestIdToken(getString(R.id.defa))
+
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString())
                 .requestEmail()
                 .build()
 

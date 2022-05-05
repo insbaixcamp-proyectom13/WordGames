@@ -10,4 +10,6 @@
     <string name="profile_username">Username</string>
     <string name="button_accept_google"></string>
     <string name="button_decline">DECLINE</string>
+    <string name="wordle">WORDLE</string>
+    <string name="wordsearch">WORD SEARCH</string>
 </resources>

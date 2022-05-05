@@ -19,6 +19,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.insbaixcamp.game.R
 import com.insbaixcamp.word.read.games.learn.online.wordgames.MainActivity
 import com.insbaixcamp.word.read.games.learn.online.wordgames.R
 import com.insbaixcamp.word.read.games.learn.online.wordgames.databinding.FragmentLoginBinding
@@ -88,7 +89,7 @@ class LoginFragment : Fragment() {
 
     private fun createLinkedUser(trim: String) {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken(getString(R.id.))
             .requestEmail()
             .build()
 
