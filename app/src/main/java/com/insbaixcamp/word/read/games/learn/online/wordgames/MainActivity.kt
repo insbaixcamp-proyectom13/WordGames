@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.animation.LinearInterpolator
+import android.widget.ImageView
 import android.widget.Toolbar
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.insbaixcamp.word.read.games.learn.online.wordgames.databinding.ActivityMainBinding
+import com.insbaixcamp.word.read.games.learn.online.wordgames.firebase.data.User
 
 
 class MainActivity : AppCompatActivity() {
@@ -136,8 +138,11 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    fun updateUI(user: FirebaseUser?){
-
+    fun updateUI(user: User?){
+        //Comprobariamos si es anonimo para esconder los botones necesarios(cerrar session por vincular cuenta...)
+        val v = supportActionBar!!.customView
+        val iv = v.findViewById<ImageView>(R.id.ivUser)
+        iv.setImageResource(resources.getIdentifier(user!!.profileImage, "mipmap", packageName))
 
     }
 }

@@ -16,11 +16,15 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.insbaixcamp.word.read.games.learn.online.wordgames.MainActivity
 import com.insbaixcamp.word.read.games.learn.online.wordgames.R
 import com.insbaixcamp.word.read.games.learn.online.wordgames.databinding.FragmentLoginBinding
 import com.insbaixcamp.word.read.games.learn.online.wordgames.firebase.data.User
+import com.insbaixcamp.word.read.games.learn.online.wordgames.firebase.data.WordSearchProfile
+import com.insbaixcamp.word.read.games.learn.online.wordgames.firebase.data.WordleProfile
 
 class LoginFragment : Fragment() {
     private lateinit var viewModel: LoginViewModel
@@ -29,6 +33,7 @@ class LoginFragment : Fragment() {
     private lateinit var profile: String
     private val RC_SIGN_IN = 1
     private lateinit var username: String
+    private lateinit var database: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +42,7 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         root = _binding.root
         profile = ""
+        database = Firebase.database.reference
 
         var ivMale = _binding.ivMale
         var ivFemale = _binding.ivFemale
@@ -48,13 +54,13 @@ class LoginFragment : Fragment() {
         ivFemale.setOnClickListener {
             ivMale.setImageResource(R.mipmap.perfil_male_empty)
             ivFemale.setImageResource(R.mipmap.profile_female)
-            profile = "female"
+            profile = "profile_female"
         }
 
         ivMale.setOnClickListener {
             ivFemale.setImageResource(R.mipmap.profile_female_empty)
             ivMale.setImageResource(R.mipmap.perfil_male)
-            profile = "male"
+            profile = "perfil_male"
         }
 
         ivGoogleSync.setOnClickListener {
@@ -124,11 +130,28 @@ class LoginFragment : Fragment() {
     }
 
     private fun createUser(uid: String, user: User) {
-//        TODO("Not yet implemented")
-        root!!.findNavController().navigate(R.id.navigation_test)
+
+        var s = activity as MainActivity
+        s.updateUI(user)
+        database.child("users").child(uid).setValue(user).addOnSuccessListener {
+            val wordleProf = WordleProfile()
+            database.child("wordle").child("profiles").child(uid).setValue(wordleProf).addOnSuccessListener {
+                val sopaLetras = WordSearchProfile()
+                database.child("wordsearch").child("profiles").child(uid).setValue(sopaLetras).addOnSuccessListener {
+
+                    //Añadiriamos el perfil tambien a la tabla de scrabble o juegos creados
+                    root!!.findNavController().navigate(R.id.navigation_test)
+                }
+            }
+        }
+            .addOnFailureListener {
+                Log.i("error", "error firebase")
+            }
+
     }
 
     private fun linkWithCredential(credential: AuthCredential) {
+        //
         Firebase.auth.signInAnonymously().addOnCompleteListener { task ->
             if (task.isSuccessful){
                 Log.d("TAG", "signInAnonymously:success")
@@ -138,13 +161,22 @@ class LoginFragment : Fragment() {
 
 //                saveLocalUser()
 
+
                 Firebase.auth.currentUser!!.linkWithCredential(credential)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Log.d("TAG", "linkWithCredential:success")
                             createUser(userFirebase!!.uid, user)
-                        }else
-                            Log.w("TAG","linkWithCredential:failure", task.exception)
+
+                        }else {
+                            Firebase.auth.currentUser!!.delete()
+                            Toast.makeText(
+                                context,
+                                "Credentials already in use!",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            Log.w("TAG", "linkWithCredential:failure", task.exception)
+                        }
                     }
             }
         }
