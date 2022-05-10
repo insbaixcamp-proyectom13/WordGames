@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.insbaixcamp.game.databinding.TestFragmentBinding
+import com.insbaixcamp.word.read.games.learn.online.wordgames.databinding.TestFragmentBinding
 import com.insbaixcamp.word.read.games.learn.online.wordgames.MainActivity
 
 class TestFragment : Fragment() {

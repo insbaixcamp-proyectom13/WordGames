@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Alumne/AndroidStudioProjects/WordGames/app/src/main/res/drawable/game_buttons_background.xml" value="0.3315" />
+        <entry key="..\:/Users/Alumne/AndroidStudioProjects/WordGames/app/src/main/res/drawable/ic_layered_waves_haikei_wordsearch.xml" value="0.1" />
         <entry key="..\:/Users/Alumne/AndroidStudioProjects/WordGames/app/src/main/res/drawable/ic_padlock_svgrepo_com.xml" value="0.3315" />
-        <entry key="..\:/Users/Alumne/AndroidStudioProjects/WordGames/app/src/main/res/layout/test_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/Alumne/AndroidStudioProjects/WordGames/app/src/main/res/layout/fragment_home_wordle.xml" value="0.25" />
+        <entry key="..\:/Users/Alumne/AndroidStudioProjects/WordGames/app/src/main/res/layout/fragment_signup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Alumne/AndroidStudioProjects/WordGames/app/src/main/res/layout/test_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/Alumne/AndroidStudioProjects/WordGames/app/src/main/res/menu/appbar_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/juanjose/Desktop/Game/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/juanjose/Desktop/Game/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/juanjose/Desktop/WordGames/app/src/main/res/layout/activity_main.xml" value="0.1" />

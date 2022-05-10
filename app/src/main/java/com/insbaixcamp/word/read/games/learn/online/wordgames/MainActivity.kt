@@ -6,6 +6,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -22,9 +23,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserInfo
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.insbaixcamp.word.read.games.learn.online.wordgames.databinding.ActivityMainBinding
@@ -142,7 +145,32 @@ class MainActivity : AppCompatActivity() {
         //Comprobariamos si es anonimo para esconder los botones necesarios(cerrar session por vincular cuenta...)
         val v = supportActionBar!!.customView
         val iv = v.findViewById<ImageView>(R.id.ivUser)
-        iv.setImageResource(resources.getIdentifier(user!!.profileImage, "mipmap", packageName))
+        val userPhoto = Firebase.auth.currentUser!!.providerData as UserInfo;
+        val photo = userPhoto.photoUrl as Uri;
 
+        //Se mira si el resultado de la profile image es diferente a "google", si es el caso,
+        //se recoje la imagen del perfil de google, si no se recoje directamente del sistema
+        Glide.with(this)
+            .load(photo)
+            .placeholder(resources.getIdentifier(user!!.profileImage, "mipmap", packageName))
+            .error(resources.getIdentifier(user!!.profileImage, "mipmap", packageName))
+            .into(iv);
+
+
+        if (user!!.profileImage != "google"){
+            iv.setImageResource(resources.getIdentifier(user!!.profileImage, "mipmap", packageName))
+        } else {
+            loadGoogleProfile(user, iv)
+        }
+    }
+
+    private fun loadGoogleProfile(user: User, iv: ImageView) {
+        val userPhoto = Firebase.auth.currentUser!!.providerData as UserInfo;
+        val photo = userPhoto.photoUrl as Uri;
+        Glide.with(this)
+            .load(photo)
+            .placeholder(resources.getIdentifier(user!!.profileImage, "mipmap", packageName))
+            .error(resources.getIdentifier(user!!.profileImage, "mipmap", packageName))
+            .into(iv);
     }
 }

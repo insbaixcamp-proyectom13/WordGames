@@ -12,4 +12,5 @@
     <string name="button_decline">DECLINE</string>
     <string name="wordle">WORDLE</string>
     <string name="wordsearch">WORD SEARCH</string>
+    <string name="play_btn">PLAY</string>
 </resources>
