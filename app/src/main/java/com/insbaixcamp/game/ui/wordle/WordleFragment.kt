@@ -17,7 +17,7 @@ import androidx.core.view.size
 import com.insbaixcamp.game.R
 import com.insbaixcamp.game.databinding.FragmentWordleBinding
 import com.insbaixcamp.game.ui.notifications.NotificationsViewModel
-import com.insbaixcamp.game.utilities.Diccionaro
+import com.insbaixcamp.game.utilities.Diccionario
 
 class WordleFragment : Fragment(), OnClickListener {
     private var _binding: FragmentWordleBinding? = null
@@ -76,7 +76,7 @@ class WordleFragment : Fragment(), OnClickListener {
         //Leer shared preferences para cargar el teclado segun idioma(ingles por defecto)
 
         var view = binding.incKeyboard as ViewStub
-        view.layoutResource = getLayoutKeyboard(Diccionaro.setUpLanguage())
+        view.layoutResource = getLayoutKeyboard(Diccionario.setUpLanguage())
         inflated = view.inflate()
 
         var container1 = inflated.findViewById(R.id.linearLayout) as ViewGroup

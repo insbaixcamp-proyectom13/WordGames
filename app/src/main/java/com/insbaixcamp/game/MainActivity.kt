@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.insbaixcamp.game.databinding.ActivityMainBinding
-import com.insbaixcamp.game.utilities.Diccionaro
+import com.insbaixcamp.game.utilities.Diccionario
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
 
-        Diccionaro.inicialitzar(resources, getShared(), packageName)
+        Diccionario.inicialitzar(resources, getShared(), packageName)
 
         //Adding custom top appBar layout
         supportActionBar!!.setDisplayShowTitleEnabled(false)

@@ -13,15 +13,16 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.insbaixcamp.game.ui.dashboard.DashboardFragment"
+        android:name="com.insbaixcamp.game.ui.notifications.NotificationsFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.insbaixcamp.game.ui.notifications.NotificationsFragment"
+        android:name="com.insbaixcamp.game.ui.word_search.WordSearchFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_word_search" />
+
     <fragment
         android:id="@+id/navigation_wordle"
         android:name="com.insbaixcamp.game.ui.wordle.WordleFragment"

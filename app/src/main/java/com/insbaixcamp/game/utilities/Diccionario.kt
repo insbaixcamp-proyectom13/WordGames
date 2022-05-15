@@ -8,7 +8,7 @@ import com.insbaixcamp.game.MainActivity
 import com.insbaixcamp.game.R
 import java.util.*
 
-object Diccionaro {
+object Diccionario {
 
     private const val SHARED_LANG_KEY = "lang"
     var language = "en"
@@ -80,6 +80,23 @@ object Diccionaro {
         return lang.toString()
     }
 
+    fun getRandomWord(size:Int): MutableList<Char> {
+        var word:String
+        do{
+            word = dictionary!![(0 until dictionary!!.size).random()]
+        }while(word.length>=size)
+
+       return word.toMutableList()
+    }
+
+    fun getRandomWordString(size:Int): String {
+        var word:String
+        do{
+            word = dictionary!![(0 until dictionary!!.size).random()]
+        }while(word.length>=size || word.length<4)
+
+        return word
+    }
 
 
 
