@@ -8,7 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:867584266003:android:158c7611696e27a77414e6",
+        "mobilesdk_app_id": "1:867584266003:android:7ada80a6eb9361f17414e6",
         "android_client_info": {
           "package_name": "com.insbaixcamp.game"
         }
@@ -37,12 +37,20 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:867584266003:android:860f1a439664901f7414e6",
+        "mobilesdk_app_id": "1:867584266003:android:13f6df6c3b69aeae7414e6",
         "android_client_info": {
           "package_name": "com.insbaixcamp.word.read.games.learn.online.wordgames"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "867584266003-ine3c3mpjf9rj2g7jqu23lb2cl54qfun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.insbaixcamp.word.read.games.learn.online.wordgames",
+            "certificate_hash": "1ab71783813c5a495d9ad70704ab41fe7a226d7a"
+          }
+        },
         {
           "client_id": "867584266003-ere5njktpfjavgddp5dpi029vf6uookg.apps.googleusercontent.com",
           "client_type": 3

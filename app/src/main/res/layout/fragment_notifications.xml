@@ -10,7 +10,7 @@
         android:id="@+id/tvName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +20,8 @@
         android:id="@+id/tvPoints2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName2" />
@@ -40,7 +40,7 @@
         android:id="@+id/tvPoints1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/tvPoints3"
         app:layout_constraintStart_toEndOf="@+id/tvPoints2"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="46dp"
+        android:layout_marginEnd="50dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
@@ -60,21 +60,11 @@
         android:id="@+id/tvPoints3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="46dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="70dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName3" />
-
-    <Button
-        android:id="@+id/bRankingGlobal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/global_ranking"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bRankingWordle"
@@ -83,15 +73,15 @@
         android:layout_marginTop="16dp"
         android:text="@string/worlde_ranking"
         app:layout_constraintEnd_toStartOf="@+id/bRankingWrodSerch"
-        app:layout_constraintStart_toEndOf="@+id/bRankingGlobal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bRankingWrodSerch"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="60dp"
         android:text="@string/searh_in_ranking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -206,33 +196,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="74dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:text="2"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bRankingGlobal" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvNumber1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="75dp"
         android:text="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bRankingWordle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvNumber3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="74dp"
         android:text="3"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bRankingWrodSerch" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRanking"

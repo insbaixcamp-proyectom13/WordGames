@@ -1030,7 +1030,7 @@ tools:context=".ui.word_search.WordSearchFragment">
         android:id="@+id/restart_btn"
         android:layout_width="134dp"
         android:layout_height="52dp"
-        android:background="@drawable/selected_cell_background_blue"
+        android:background="@drawable/selected_cell_background"
         android:text="New Game"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -1056,7 +1056,7 @@ tools:context=".ui.word_search.WordSearchFragment">
     android:id="@+id/congrats_layout"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@drawable/selected_cell_background_blue"
+    android:background="@drawable/selected_cell_background"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
@@ -1067,6 +1067,7 @@ tools:context=".ui.word_search.WordSearchFragment">
     app:layout_constraintTop_toTopOf="@+id/words_grid">
 
     <TextView
+        android:id="@+id/tvPuntos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -1089,20 +1090,6 @@ tools:context=".ui.word_search.WordSearchFragment">
         android:textSize="17sp" />
 </LinearLayout>
 
-<LinearLayout
-    android:id="@+id/celebrate"
-    android:layout_width="500dp"
-    android:layout_height="500dp"
-    android:background="@drawable/celebration"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:visibility="gone"
-    app:layout_constraintBottom_toBottomOf="@+id/words_grid"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/words_grid">
-</LinearLayout>
 
     <TextView
         android:id="@+id/tvWord0"

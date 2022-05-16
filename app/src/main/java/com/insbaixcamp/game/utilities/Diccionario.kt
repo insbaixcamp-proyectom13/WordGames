@@ -32,7 +32,7 @@ object Diccionario {
 
     private fun mostraDiccionari(i: Int) {
         for (j in 0..i){
-            dictionary?.get(j)?.let { Log.i("paraula", "$it : $j") }
+            dictionary?.get(j)?.let {  }
         }
     }
 

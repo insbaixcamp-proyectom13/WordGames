@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_word_search.*
 import java.util.*
 import kotlin.concurrent.schedule
 import com.insbaixcamp.game.utilities.Diccionario
+import java.lang.Math.abs
 import java.text.Normalizer
 
 
@@ -74,10 +75,9 @@ class WordSearchFragment : Fragment() , View.OnTouchListener , OnClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //El temporizador comienza
         startTime = System.currentTimeMillis()
-
         // Ocultar el mensaje de felicitación
         congrats_layout.visibility = View.GONE
-        celebrate.visibility = View.GONE
+
 
         // Establecer el ancho de cada celda de la cuadrícula (solo para una cuadrícula de 10*10)
         cellWidth = resources.displayMetrics.widthPixels / 10
@@ -105,7 +105,7 @@ class WordSearchFragment : Fragment() , View.OnTouchListener , OnClickListener{
     }
 
     // Cada vez que el usuario desliza la palabra, se usará un color aleatorio para el trazo
-    private var selectedColour = R.drawable.selected_cell_background_blue
+    private var selectedColour = R.drawable.selected_cell_background
 
     override fun onTouch(v: View, event: MotionEvent): Boolean{
 
@@ -115,24 +115,10 @@ class WordSearchFragment : Fragment() , View.OnTouchListener , OnClickListener{
                 // El usuario comenzó a seleccionar celdas
                 // Ahora seleccionamos un color aleatorio para colorear las celdas que tocaron
                 val random = Random()
-                val randomColour = random.nextInt(6)
-                if(randomColour == 0){
-                    v.background = ContextCompat.getDrawable(requireContext(), R.drawable.selected_cell_background)
-                    selectedColour = R.drawable.selected_cell_background
-                } else if (randomColour == 2){
-                    v.background = ContextCompat.getDrawable(requireContext(), R.drawable.selected_cell_background_green)
-                    selectedColour = R.drawable.selected_cell_background_green
-                } else if (randomColour == 3){
-                    v.background = ContextCompat.getDrawable(requireContext(), R.drawable.selected_cell_background_red)
-                    selectedColour = R.drawable.selected_cell_background_red
-                } else if (randomColour == 4){
-                    v.background = ContextCompat.getDrawable(requireContext(), R.drawable.selected_cell_background_yellow)
-                    selectedColour = R.drawable.selected_cell_background_yellow
-                }
-                else{
-                    v.background = ContextCompat.getDrawable(requireContext(), R.drawable.selected_cell_background_blue)
-                    selectedColour = R.drawable.selected_cell_background_blue
-                }
+
+                v.background = ContextCompat.getDrawable(requireContext(), R.drawable.selected_cell_background)
+                selectedColour = R.drawable.selected_cell_background
+
                 xInitial = event.x
                 yInitial = event.y
 
@@ -336,6 +322,7 @@ class WordSearchFragment : Fragment() , View.OnTouchListener , OnClickListener{
             // Muestra el mensaje de felicitación y el tiempo total empleado para terminar el juego
             if (showCongrats){
                 totalTimeSpent = System.currentTimeMillis() - startTime
+                var points = 50000 / (totalTimeSpent/1000)
                 if (totalTimeSpent/1000 >= 60){
                     var minutes = totalTimeSpent/1000/60
                     var seconds = totalTimeSpent/1000%60
@@ -351,10 +338,10 @@ class WordSearchFragment : Fragment() , View.OnTouchListener , OnClickListener{
 
                 }else {
                     timeTxt.text = "Time Spent: " + (totalTimeSpent / 1000).toString() + "s"
-                }
-                congrats_layout.visibility = View.VISIBLE
 
-                celebrate.visibility = View.VISIBLE
+                }
+                tvPuntos.text = "Felicidades has consegudio: "+points+" puntos"
+                congrats_layout.visibility = View.VISIBLE
             }
 
         } else {
@@ -576,7 +563,6 @@ class WordSearchFragment : Fragment() , View.OnTouchListener , OnClickListener{
         }
 
         congrats_layout.visibility = View.GONE
-        celebrate.visibility = View.GONE
         for (i in 0 until numWords){
             wordArray[i] = Word(words[i])
         }
